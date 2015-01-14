@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<title>Characters</title>
+
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+
+<script src="lib/requirejs/require.js"></script>
+<script src="js/config.js"></script>
+<script>require(['main']);</script>
+
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://en.wikipedia.org/wiki/Unicode" title="'Unicode' on Wikipedia">Unicode characters</a></h1>
+	</div>
+	<p>In console:</p>
+	<pre>app.get(); // { ch: 'a', dec: 97 ... }
+app.set('hex', 'b7');
+app.get('html_named'); // '&amp;middot;'</pre>
+</div>
