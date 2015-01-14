@@ -1,0 +1,15 @@
+[submodule "lib/bootstrap"]
+	path = lib/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "lib/underscore"]
+	path = lib/underscore
+	url = https://github.com/jashkenas/underscore.git
+[submodule "lib/ok"]
+	path = lib/ok
+	url = https://github.com/j-/ok.git
+[submodule "lib/jquery"]
+	path = lib/jquery
+	url = https://github.com/jquery/jquery.git
+[submodule "lib/requirejs"]
+	path = lib/requirejs
+	url = https://github.com/jrburke/requirejs.git
