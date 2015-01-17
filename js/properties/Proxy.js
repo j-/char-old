@@ -7,7 +7,11 @@ define(function (require) {
 			if (!delegate) {
 				throw new Error('Proxy must be initialized with delegate');
 			}
-			this.delegate = delegate
+			this.delegate = delegate;
+			this.listenTo(this.delegate, 'change', this.triggerChange);
+		},
+		triggerChange: function () {
+			ok.Property.fn.setValue.apply(this, arguments);
 		},
 		setValue: function (newValue) {
 			this.delegate.set(newValue);
