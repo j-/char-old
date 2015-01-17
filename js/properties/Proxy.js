@@ -10,8 +10,8 @@ define(function (require) {
 			this.delegate = delegate;
 			this.listenTo(this.delegate, 'change', this.triggerChange);
 		},
-		triggerChange: function () {
-			ok.Property.fn.setValue.apply(this, arguments);
+		triggerChange: function (delegate, newValue, oldValue) {
+			this.trigger('change', this, newValue, oldValue);
 		},
 		setValue: function (newValue) {
 			this.delegate.set(newValue);
