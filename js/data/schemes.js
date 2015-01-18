@@ -35,7 +35,7 @@ define(function () {
 		{
 			id: 'html_named',
 			name: 'HTML',
-			variant: 'dec'
+			variant: 'named'
 		},
 		{
 			id: 'html_dec',
