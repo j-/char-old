@@ -1,0 +1,26 @@
+{
+  "name": "char",
+  "version": "0.0.0",
+  "description": "Unicode characters",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j-/char.git"
+  },
+  "keywords": [
+    "unicode",
+    "ascii",
+    "characters",
+    "char",
+    "charmap"
+  ],
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/char/issues"
+  },
+  "homepage": "https://github.com/j-/char"
+}
