@@ -22,5 +22,31 @@
   "bugs": {
     "url": "https://github.com/j-/char/issues"
   },
-  "homepage": "https://github.com/j-/char"
+  "homepage": "https://github.com/j-/char",
+  "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.9.0",
+    "babel-plugin-transform-runtime": "^6.8.0",
+    "babel-polyfill": "^6.8.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.8.0",
+    "babel-runtime": "^6.6.1",
+    "bootstrap": "^3.3.6",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "react": "^15.0.2",
+    "react-bootstrap": "^0.29.4",
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "why-did-you-update": "0.0.8"
+  }
 }
