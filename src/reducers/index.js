@@ -16,11 +16,13 @@ import lastModified, {
 import {
 	TYPE_CHAR,
 	TYPE_DECIMAL,
+	TYPE_HEXADECIMAL,
 } from '../conversion';
 
 const inputValues = combineReducers({
 	[TYPE_CHAR]: inputValue(TYPE_CHAR),
 	[TYPE_DECIMAL]: inputValue(TYPE_DECIMAL),
+	[TYPE_HEXADECIMAL]: inputValue(TYPE_HEXADECIMAL),
 });
 
 export default combineReducers({
