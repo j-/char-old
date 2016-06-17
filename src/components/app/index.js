@@ -1,7 +1,6 @@
 import App from './app';
 import { connect } from 'react-redux';
 import { getCodePoint, isCodePointValid } from '../../reducers';
-import { setCodePoint } from '../../reducers/actions';
 
 const mapStateToProps = (state) => ({
 	codePoint: getCodePoint(state),
@@ -9,8 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const AppContainer = connect(
-	mapStateToProps,
-	{ setCodePoint }
+	mapStateToProps
 )(App);
 
 export default AppContainer;
