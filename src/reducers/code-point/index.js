@@ -27,5 +27,7 @@ export const isCodePointValid = (state) => (
 	// Code point must be a valid integer
 	!isNaN(state) &&
 	// Cannot be negative
-	state >= 0
+	state >= 0 &&
+	// Cannot exceed maximum valid code point
+	state <= 0x10ffff
 );
