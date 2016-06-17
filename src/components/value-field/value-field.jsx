@@ -1,9 +1,23 @@
 import React, { PropTypes } from 'react';
 import { types } from '../../conversion';
 
-const ValueField = ({ input, isEditing, onUpdate }) => (
+const buildClassNames = (map) => (
+	// Take the keys from this object
+	Object.keys(map)
+		// Only use keys whose value is truthy
+		.filter((key) => map[key])
+		// Concatenate keys
+		.join(' ')
+);
+
+const ValueField = ({ input, isEditing, isValid, onUpdate }) => (
 	<input
-		className={ isEditing ? 'editing' : null }
+		className={
+			buildClassNames({
+				'editing': isEditing,
+				'valid': isValid,
+			})
+		}
 		type="text"
 		value={ input || '' }
 		onChange={
@@ -19,11 +33,13 @@ ValueField.propTypes = {
 		PropTypes.number,
 	]),
 	isEditing: PropTypes.bool,
+	isValid: PropTypes.bool,
 	onUpdate: PropTypes.func.isRequired,
 };
 
 ValueField.defaultProps = {
 	isEditing: false,
+	isValid: true,
 };
 
 export default ValueField;

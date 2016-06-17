@@ -29,6 +29,7 @@ const mapStateToProps = (state, { type }) => {
 	return {
 		input,
 		isEditing,
+		isValid,
 		type,
 	};
 };
