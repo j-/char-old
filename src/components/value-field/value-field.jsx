@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { types } from '../../conversion';
 
-const ValueField = ({ input, onUpdate }) => (
+const ValueField = ({ input, isEditing, onUpdate }) => (
 	<input
+		className={ isEditing ? 'editing' : null }
 		type="text"
-		value={ input }
+		value={ input || '' }
 		onChange={
 			(e) => onUpdate(e.target.value)
 		}
@@ -17,7 +18,12 @@ ValueField.propTypes = {
 		PropTypes.string,
 		PropTypes.number,
 	]),
+	isEditing: PropTypes.bool,
 	onUpdate: PropTypes.func.isRequired,
+};
+
+ValueField.defaultProps = {
+	isEditing: false,
 };
 
 export default ValueField;
