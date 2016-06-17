@@ -1,7 +1,17 @@
 import { combineReducers } from 'redux';
-import codePoint, { getCodePoint as getStateCodePoint } from './code-point';
-import inputValue, { getInputValue as getStateInputValue } from './input-value';
-import lastModified, { getLastModified as getStateLastModified } from './last-modified';
+
+import codePoint, {
+	getCodePoint as getStateCodePoint,
+	isCodePointValid as getStateCodePointValid,
+} from './code-point';
+
+import inputValue, {
+	getInputValue as getStateInputValue,
+} from './input-value';
+
+import lastModified, {
+	getLastModified as getStateLastModified,
+} from './last-modified';
 
 import {
 	TYPE_CHAR,
@@ -21,6 +31,10 @@ export default combineReducers({
 
 export const getCodePoint = (state) => (
 	getStateCodePoint(state.codePoint)
+);
+
+export const isCodePointValid = (state) => (
+	getStateCodePointValid(state.codePoint)
 );
 
 export const getInputValue = (state, type) => (

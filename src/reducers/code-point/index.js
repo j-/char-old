@@ -22,3 +22,10 @@ export default (state = DEFAULT_STATE, action) => {
 };
 
 export const getCodePoint = (state) => state;
+
+export const isCodePointValid = (state) => (
+	// Code point must be a valid integer
+	!isNaN(state) &&
+	// Cannot be negative
+	state >= 0
+);
