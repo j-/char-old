@@ -11,6 +11,7 @@ const App = ({ codePoint, isValid, setCodePoint }) => (
 	<div className="container">
 		<h1>Char</h1>
 		<ul>
+			<li><ValueField type={ TYPE_CHAR } /></li>
 			<li><ValueField type={ TYPE_DECIMAL } /></li>
 			<li><ValueField type={ TYPE_HEXADECIMAL } /></li>
 		</ul>
