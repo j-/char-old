@@ -18,9 +18,18 @@ const App = ({ codePoint, isValid, setCodePoint }) => (
 			/>
 		</div>
 		<ul className="list-unstyled">
-			<li><ValueField type={ TYPE_CHAR } /></li>
-			<li><ValueField type={ TYPE_DECIMAL } /></li>
-			<li><ValueField type={ TYPE_HEXADECIMAL } /></li>
+			<li>
+				<label>Character</label>
+				<ValueField type={ TYPE_CHAR } />
+			</li>
+			<li>
+				<label>Decimal</label>
+				<ValueField type={ TYPE_DECIMAL } />
+			</li>
+			<li>
+				<label>Hexadecimal</label>
+				<ValueField type={ TYPE_HEXADECIMAL } />
+			</li>
 		</ul>
 	</div>
 );
