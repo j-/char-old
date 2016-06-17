@@ -7,17 +7,25 @@ import {
 	getCodePoint,
 	getInputValue,
 	getLastModified,
+	isCodePointValid,
 } from '../../reducers';
 
 const mapStateToProps = (state, { type }) => {
 	const codePoint = getCodePoint(state);
 	const lastModified = getLastModified(state);
+	const isValid = isCodePointValid(state);
 	const isEditing = lastModified === type;
-	const input = isEditing ?
+	let input;
+	if (isEditing) {
 		// While editing, do not switch out the user's input
-		getInputValue(state, type) :
+		input = getInputValue(state, type);
+	} else if (isValid) {
 		// Allow other fields to update as they type
-		convertFromCodePoint(codePoint, type);
+		input = convertFromCodePoint(codePoint, type);
+	} else {
+		// Do not show any value for invalid code points
+		input = '';
+	}
 	return {
 		input,
 		isEditing,
