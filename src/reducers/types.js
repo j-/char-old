@@ -1,1 +1,3 @@
 export const SET_CODE_POINT = 'SET_CODE_POINT';
+
+export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
