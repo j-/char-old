@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { types } from '../../conversion';
+import { FormControl } from 'react-bootstrap';
 
 const buildClassNames = (map) => (
 	// Take the keys from this object
@@ -11,7 +12,7 @@ const buildClassNames = (map) => (
 );
 
 const ValueField = ({ input, isEditing, isValid, onUpdate }) => (
-	<input
+	<FormControl
 		className={
 			buildClassNames({
 				'editing': isEditing,

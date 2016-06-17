@@ -17,7 +17,7 @@ const App = ({ codePoint, isValid, setCodePoint }) => (
 				type={ TYPE_CHAR }
 			/>
 		</div>
-		<ul>
+		<ul className="list-unstyled">
 			<li><ValueField type={ TYPE_CHAR } /></li>
 			<li><ValueField type={ TYPE_DECIMAL } /></li>
 			<li><ValueField type={ TYPE_HEXADECIMAL } /></li>
