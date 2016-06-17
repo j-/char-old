@@ -15,7 +15,9 @@ const ValueField = ({ input, isEditing, isValid, onUpdate }) => (
 		className={
 			buildClassNames({
 				'editing': isEditing,
+				'not-editing': !isEditing,
 				'valid': isValid,
+				'invalid': !isValid,
 			})
 		}
 		type="text"
