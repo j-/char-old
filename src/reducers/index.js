@@ -13,17 +13,14 @@ import lastModified, {
 	getLastModified as getStateLastModified,
 } from './last-modified';
 
-import {
-	TYPE_CHAR,
-	TYPE_DECIMAL,
-	TYPE_HEXADECIMAL,
-} from '../conversion';
+import { types } from '../conversion';
 
-const inputValues = combineReducers({
-	[TYPE_CHAR]: inputValue(TYPE_CHAR),
-	[TYPE_DECIMAL]: inputValue(TYPE_DECIMAL),
-	[TYPE_HEXADECIMAL]: inputValue(TYPE_HEXADECIMAL),
-});
+let inputValues;
+{
+	const reducers = {};
+	types.forEach((type) => reducers[type] = inputValue(type));
+	inputValues = combineReducers(reducers);
+}
 
 export default combineReducers({
 	codePoint,
