@@ -5,4 +5,4 @@ export default combineReducers({
 	codePoint,
 });
 
-export const getCodePoint = (state) => getStateCodePoint(state);
+export const getCodePoint = (state) => getStateCodePoint(state.codePoint);
