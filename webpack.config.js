@@ -45,9 +45,6 @@ module.exports = {
 			},
 			{
 				loader: 'style!css!less',
-				include: [
-					path.resolve(__dirname, 'src/styles'),
-				],
 				test: /\.(css|less)$/,
 			},
 			{
