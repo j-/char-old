@@ -2,7 +2,12 @@ import React from 'react';
 import Char from '../char';
 import ValueFields from '../value-fields';
 import { TYPE_CHAR } from '../../conversion';
-import { PageHeader } from 'react-bootstrap';
+import {
+	PageHeader,
+	Grid,
+	Row,
+	Col,
+} from 'react-bootstrap';
 
 const HEADER_TEXT = 'Unicode Characters';
 const HEADER_URL = 'https://en.wikipedia.org/wiki/Unicode';
@@ -15,14 +20,24 @@ const App = ({ codePoint, isValid }) => (
 				{ HEADER_TEXT }
 			</a>
 		</PageHeader>
-		<div className="char-display">
-			<Char
-				codePoint={ codePoint }
-				isValid={ isValid }
-				type={ TYPE_CHAR }
-			/>
-		</div>
-		<ValueFields />
+		<Grid>
+			<Row>
+				<Col md={ 8 }>
+
+				</Col>
+				<Col md={ 4 }>
+					<div className="char-display">
+						<Char
+							codePoint={ codePoint }
+							isValid={ isValid }
+							type={ TYPE_CHAR }
+						/>
+					</div>
+					<hr />
+					<ValueFields />
+				</Col>
+			</Row>
+		</Grid>
 	</div>
 );
 
