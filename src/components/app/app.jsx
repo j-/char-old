@@ -1,4 +1,5 @@
 import React from 'react';
+import AppBody from '../app-body';
 import AppSidebar from '../app-sidebar';
 import {
 	PageHeader,
@@ -21,7 +22,7 @@ const App = () => (
 		<Grid>
 			<Row>
 				<Col md={ 8 }>
-
+					<AppBody />
 				</Col>
 				<Col md={ 4 }>
 					<AppSidebar />
