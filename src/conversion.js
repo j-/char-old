@@ -7,6 +7,8 @@ export const TYPE_BINARY = 'binary';
 export const TYPE_CSS = 'css';
 export const TYPE_JSLONG = 'jslong';
 export const TYPE_JSSHORT = 'jsshort';
+export const TYPE_HTMLDECIMAL = 'htmldecimal';
+export const TYPE_HTMLHEXADECIMAL = 'htmlhexadecimal';
 
 export const types = [
 	TYPE_CHAR,
@@ -18,6 +20,8 @@ export const types = [
 	TYPE_CSS,
 	TYPE_JSLONG,
 	TYPE_JSSHORT,
+	TYPE_HTMLDECIMAL,
+	TYPE_HTMLHEXADECIMAL,
 ];
 
 const throwInvalidType = (type) => {
@@ -30,6 +34,8 @@ const lpadZeroes = (value, length) => (
 );
 
 const EXP_UNICODE = /^U\+[0-9a-f]{4,}$/i;
+const EXP_HTMLDECIMAL = /^&#[0-9]+;$/;
+const EXP_HTMLHEXADECIMAL = /^&#x[0-9a-f]+;$/i;
 
 /**
  * @param {Number} codePoint Unicode value of character to convert
@@ -61,6 +67,10 @@ export const convertFromCodePoint = (codePoint, type = TYPE_CHAR) => {
 			return codePoint > 0xff ?
 				null :
 				'\\x' + lpadZeroes(codePoint.toString(0x10), 2);
+		case TYPE_HTMLDECIMAL:
+			return '&#' + codePoint + ';';
+		case TYPE_HTMLHEXADECIMAL:
+			return '&#x' + codePoint.toString(0x10) + ';';
 		default:
 			throwInvalidType(type);
 	}
@@ -94,6 +104,14 @@ export const convertToCodePoint = (value, type = TYPE_CHAR) => {
 			return parseInt(value.substring(2), 0x10);
 		case TYPE_JSSHORT:
 			return parseInt(value.substring(2, 4), 0x10);
+		case TYPE_HTMLDECIMAL:
+			return EXP_HTMLDECIMAL.test(value) ?
+				parseInt(value.substring(2, value.length - 1), 10) :
+				NaN;
+		case TYPE_HTMLHEXADECIMAL:
+			return EXP_HTMLHEXADECIMAL.test(value) ?
+				parseInt(value.substring(3, value.length - 1), 0x10) :
+				NaN;
 		default:
 			throwInvalidType(type);
 	}
