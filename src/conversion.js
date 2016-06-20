@@ -29,6 +29,8 @@ const lpadZeroes = (value, length) => (
 	'0'.repeat(Math.max(length - value.length, 0)) + value
 );
 
+const EXP_UNICODE = /^U\+[0-9a-f]{4,}$/i;
+
 /**
  * @param {Number} codePoint Unicode value of character to convert
  * @param {?String} type Type of value to convert into
@@ -75,7 +77,9 @@ export const convertToCodePoint = (value, type = TYPE_CHAR) => {
 		case TYPE_CHAR:
 			return String(value).charCodeAt(0);
 		case TYPE_UNICODE:
-			return parseInt(value.substring(2), 0x10);
+			return EXP_UNICODE.test(value) ?
+				parseInt(value.substring(2), 0x10) :
+				NaN;
 		case TYPE_HEXADECIMAL:
 			return parseInt(value, 0x10);
 		case TYPE_DECIMAL:
