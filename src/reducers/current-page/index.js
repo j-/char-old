@@ -8,8 +8,8 @@ const MAX_CODE_POINT = 0x10ffff;
 const PAGE_SIZE = 0x10 * 0x10;
 const MAX_PAGE = MAX_CODE_POINT * PAGE_SIZE;
 
-const nextPage = (page) => Math.min(page, MAX_PAGE);
-const prevPage = (page) => Math.max(page, MIN_PAGE);
+const nextPage = (page) => Math.min(page + 1, MAX_PAGE);
+const prevPage = (page) => Math.max(page - 1, MIN_PAGE);
 
 export default (state = 0, action) => {
 	switch (action.type) {
