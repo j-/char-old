@@ -83,7 +83,7 @@ export const convertToCodePoint = (value, type = TYPE_CHAR) => {
 		case TYPE_HEXADECIMAL:
 			return parseInt(value, 0x10);
 		case TYPE_DECIMAL:
-			return Number(value);
+			return parseInt(value, 10);
 		case TYPE_OCTAL:
 			return parseInt(value, 0o10);
 		case TYPE_BINARY:
