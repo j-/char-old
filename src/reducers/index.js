@@ -13,6 +13,10 @@ import lastModified, {
 	getLastModified as getStateLastModified,
 } from './last-modified';
 
+import currentPage, {
+	getCurrentPage as getStateCurrentPage,
+} from './current-page';
+
 import { types } from '../conversion';
 
 let inputValues;
@@ -26,6 +30,7 @@ export default combineReducers({
 	codePoint,
 	inputValues,
 	lastModified,
+	currentPage,
 });
 
 export const getCodePoint = (state) => (
@@ -42,4 +47,8 @@ export const getInputValue = (state, type) => (
 
 export const getLastModified = (state) => (
 	getStateLastModified(state.lastModified)
+);
+
+export const getCurrentPage = (state) => (
+	getStateCurrentPage(state.currentPage)
 );
