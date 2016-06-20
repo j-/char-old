@@ -26,7 +26,7 @@ const throwInvalidType = (type) => {
 };
 
 const lpadZeroes = (value, length) => (
-	'0'.repeat(Math.max(length - value.length, 0)) + value
+	'0'.repeat(Math.max(length - String(value).length, 0)) + value
 );
 
 const EXP_UNICODE = /^U\+[0-9a-f]{4,}$/i;
