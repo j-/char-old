@@ -2,8 +2,9 @@ import React from 'react';
 import ValueField from '../value-field';
 import {
 	TYPE_CHAR,
-	TYPE_DECIMAL,
+	TYPE_UNICODE,
 	TYPE_HEXADECIMAL,
+	TYPE_DECIMAL,
 	TYPE_OCTAL,
 	TYPE_BINARY,
 	TYPE_CSS,
@@ -18,12 +19,16 @@ const ValueFields = () => (
 			<ValueField type={ TYPE_CHAR } />
 		</li>
 		<li>
-			<label>Decimal</label>
-			<ValueField type={ TYPE_DECIMAL } />
+			<label>Unicode</label>
+			<ValueField type={ TYPE_UNICODE } />
 		</li>
 		<li>
 			<label>Hexadecimal</label>
 			<ValueField type={ TYPE_HEXADECIMAL } />
+		</li>
+		<li>
+			<label>Decimal</label>
+			<ValueField type={ TYPE_DECIMAL } />
 		</li>
 		<li>
 			<label>Octal</label>

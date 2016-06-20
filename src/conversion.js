@@ -1,6 +1,7 @@
 export const TYPE_CHAR = 'char';
-export const TYPE_DECIMAL = 'decimal';
+export const TYPE_UNICODE = 'unicode';
 export const TYPE_HEXADECIMAL = 'hexadecimal';
+export const TYPE_DECIMAL = 'decimal';
 export const TYPE_OCTAL = 'octal';
 export const TYPE_BINARY = 'binary';
 export const TYPE_CSS = 'css';
@@ -9,8 +10,9 @@ export const TYPE_JSSHORT = 'jsshort';
 
 export const types = [
 	TYPE_CHAR,
-	TYPE_DECIMAL,
+	TYPE_UNICODE,
 	TYPE_HEXADECIMAL,
+	TYPE_DECIMAL,
 	TYPE_OCTAL,
 	TYPE_BINARY,
 	TYPE_CSS,
@@ -37,10 +39,12 @@ export const convertFromCodePoint = (codePoint, type = TYPE_CHAR) => {
 	switch (type) {
 		case TYPE_CHAR:
 			return String.fromCodePoint(codePoint);
-		case TYPE_DECIMAL:
-			return String(codePoint);
+		case TYPE_UNICODE:
+			return 'U+' + lpadZeroes(codePoint.toString(0x10).toUpperCase(), 4);
 		case TYPE_HEXADECIMAL:
 			return Number(codePoint).toString(0x10);
+		case TYPE_DECIMAL:
+			return String(codePoint);
 		case TYPE_OCTAL:
 			return Number(codePoint).toString(0o10);
 		case TYPE_BINARY:
@@ -70,10 +74,12 @@ export const convertToCodePoint = (value, type = TYPE_CHAR) => {
 	switch (type) {
 		case TYPE_CHAR:
 			return String(value).charCodeAt(0);
-		case TYPE_DECIMAL:
-			return Number(value);
+		case TYPE_UNICODE:
+			return parseInt(value.substring(2), 0x10);
 		case TYPE_HEXADECIMAL:
 			return parseInt(value, 0x10);
+		case TYPE_DECIMAL:
+			return Number(value);
 		case TYPE_OCTAL:
 			return parseInt(value, 0o10);
 		case TYPE_BINARY:
