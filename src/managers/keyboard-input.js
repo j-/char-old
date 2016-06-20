@@ -8,6 +8,9 @@ const KEY_NEXT = 0x27; // Right
 
 export default ({ dispatch }) => {
 	document.addEventListener('keydown', (e) => {
+		if (e.target.tagName.toLowerCase() === 'input') {
+			return;
+		}
 		const code = e.which;
 		switch (code) {
 			case KEY_PREV:
