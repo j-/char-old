@@ -69,7 +69,7 @@ export const convertFromCodePoint = (codePoint, type = TYPE_CHAR) => {
 /**
  * @param {String} value User input
  * @param {?String} type Type of value to convert from
- * @returns {String} Converted value
+ * @returns {Number} Converted value (can be NaN if invalid)
  * @throws {TypeError} If type is invalid
  */
 export const convertToCodePoint = (value, type = TYPE_CHAR) => {
