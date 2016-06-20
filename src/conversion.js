@@ -1,3 +1,8 @@
+import {
+	getEntityCodePoint,
+	getEntityName,
+} from './entities';
+
 export const TYPE_CHAR = 'char';
 export const TYPE_UNICODE = 'unicode';
 export const TYPE_HEXADECIMAL = 'hexadecimal';
@@ -9,6 +14,7 @@ export const TYPE_JSLONG = 'jslong';
 export const TYPE_JSSHORT = 'jsshort';
 export const TYPE_HTMLDECIMAL = 'htmldecimal';
 export const TYPE_HTMLHEXADECIMAL = 'htmlhexadecimal';
+export const TYPE_HTMLNAMED = 'htmlnamed';
 
 export const types = [
 	TYPE_CHAR,
@@ -22,6 +28,7 @@ export const types = [
 	TYPE_JSSHORT,
 	TYPE_HTMLDECIMAL,
 	TYPE_HTMLHEXADECIMAL,
+	TYPE_HTMLNAMED,
 ];
 
 const throwInvalidType = (type) => {
@@ -36,6 +43,7 @@ const lpadZeroes = (value, length) => (
 const EXP_UNICODE = /^U\+[0-9a-f]{4,}$/i;
 const EXP_HTMLDECIMAL = /^&#[0-9]+;$/;
 const EXP_HTMLHEXADECIMAL = /^&#x[0-9a-f]+;$/i;
+const EXP_HTMLNAMED = /^&[\w\d]+;$/i;
 
 /**
  * @param {Number} codePoint Unicode value of character to convert
@@ -71,6 +79,10 @@ export const convertFromCodePoint = (codePoint, type = TYPE_CHAR) => {
 			return '&#' + codePoint + ';';
 		case TYPE_HTMLHEXADECIMAL:
 			return '&#x' + codePoint.toString(0x10) + ';';
+		case TYPE_HTMLNAMED: {
+			const name = getEntityName(codePoint);
+			return name ? '&' + name + ';' : null;
+		}
 		default:
 			throwInvalidType(type);
 	}
@@ -112,6 +124,15 @@ export const convertToCodePoint = (value, type = TYPE_CHAR) => {
 			return EXP_HTMLHEXADECIMAL.test(value) ?
 				parseInt(value.substring(3, value.length - 1), 0x10) :
 				NaN;
+		case TYPE_HTMLNAMED: {
+			if (!EXP_HTMLNAMED.test(value)) {
+				return NaN;
+			}
+			const codePoint = getEntityCodePoint(
+				value.substring(1, value.length - 1)
+			);
+			return codePoint || NaN;
+		}
 		default:
 			throwInvalidType(type);
 	}

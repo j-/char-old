@@ -12,6 +12,7 @@ import {
 	TYPE_JSSHORT,
 	TYPE_HTMLDECIMAL,
 	TYPE_HTMLHEXADECIMAL,
+	TYPE_HTMLNAMED,
 } from '../../conversion';
 
 const ValueFields = () => (
@@ -59,6 +60,10 @@ const ValueFields = () => (
 		<li>
 			<label>HTML (hexadecimal)</label>
 			<ValueField type={ TYPE_HTMLHEXADECIMAL } />
+		</li>
+		<li>
+			<label>HTML (named)</label>
+			<ValueField type={ TYPE_HTMLNAMED } />
 		</li>
 	</ul>
 );
