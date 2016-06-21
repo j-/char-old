@@ -24,6 +24,8 @@ import charmap, {
 
 import { types } from '../conversion';
 
+const MAX_CODE_POINT = 0x10ffff;
+
 let inputValues;
 {
 	const reducers = {};
@@ -65,4 +67,22 @@ export const getCharmapWidth = (state) => (
 
 export const getCharmapHeight = (state) => (
 	getStateCharmapHeight(state.charmap)
+);
+
+export const getPageSize = (state) => (
+	getCharmapWidth(state) * getCharmapHeight(state)
+);
+
+export const getMinPage = () => 0;
+
+export const getMaxPage = (state) => (
+	Math.ceil(MAX_CODE_POINT / getPageSize(state))
+);
+
+export const isMinPage = (state) => (
+	getCurrentPage(state) === getMinPage(state)
+);
+
+export const isMaxPage = (state) => (
+	getCurrentPage(state) === getMaxPage(state)
 );
