@@ -14,12 +14,14 @@ const HEADER_TITLE = '\'Unicode\' on Wikipedia';
 
 const App = () => (
 	<div className="container">
-		<PageHeader>
-			<a href={ HEADER_URL } title={ HEADER_TITLE }>
-				{ HEADER_TEXT }
-			</a>
-		</PageHeader>
 		<Grid>
+			<Row>
+				<PageHeader>
+					<a href={ HEADER_URL } title={ HEADER_TITLE }>
+						{ HEADER_TEXT }
+					</a>
+				</PageHeader>
+			</Row>
 			<Row>
 				<Col md={ 8 }>
 					<AppBody />
