@@ -1,11 +1,17 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'react-bootstrap';
+import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 
 const PageNavigation = ({ prevPage, nextPage }) => (
-	<ButtonGroup>
-		<Button onClick={ prevPage }>&larr;</Button>
-		<Button onClick={ nextPage }>&rarr;</Button>
-	</ButtonGroup>
+	<Panel>
+		<ButtonGroup>
+			<Button onClick={ prevPage }>
+				&larr; Previous page
+			</Button>
+			<Button onClick={ nextPage }>
+				Next page &rarr;
+			</Button>
+		</ButtonGroup>
+	</Panel>
 );
 
 export default PageNavigation;
