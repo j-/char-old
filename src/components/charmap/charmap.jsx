@@ -5,10 +5,10 @@ const handler = (callback, ...args) => (e) => {
 	callback(...args);
 };
 
-export const CharmapCell = ({ offset, setCodePoint }) => (
+export const CharmapCell = ({ offset, setCodePoint, activeCodePoint }) => (
 	<td className="charmap-cell">
 		<a
-			className="charmap-char"
+			className={ 'charmap-char ' + (offset === activeCodePoint ? 'active' : '') }
 			href="#"
 			onClick={ handler(setCodePoint, offset) }
 		>
@@ -19,7 +19,7 @@ export const CharmapCell = ({ offset, setCodePoint }) => (
 	</td>
 );
 
-export const CharmapRow = ({ offset, cols, setCodePoint }) => (
+export const CharmapRow = ({ offset, cols, setCodePoint, activeCodePoint }) => (
 	<tr className="charmap-row">
 	{
 		Array(cols).fill(null).map((_, i) => (
@@ -27,13 +27,14 @@ export const CharmapRow = ({ offset, cols, setCodePoint }) => (
 				key={ i }
 				offset={ offset + i }
 				setCodePoint={ setCodePoint }
+				activeCodePoint={ activeCodePoint }
 			/>
 		))
 	}
 	</tr>
 );
 
-export const CharmapRows = ({ offset, rows, cols, setCodePoint }) => (
+export const CharmapRows = ({ offset, rows, cols, setCodePoint, activeCodePoint }) => (
 	<tbody className="charmap-body">
 	{
 		Array(rows).fill(null).map((_, i) => (
@@ -42,13 +43,14 @@ export const CharmapRows = ({ offset, rows, cols, setCodePoint }) => (
 				offset={ offset + i * cols }
 				cols={ cols }
 				setCodePoint={ setCodePoint }
+				activeCodePoint={ activeCodePoint }
 			/>
 		))
 	}
 	</tbody>
 );
 
-const Charmap = ({ page, rows, cols, setCodePoint }) => {
+const Charmap = ({ page, rows, cols, setCodePoint, activeCodePoint }) => {
 	return (
 		<table className="charmap">
 			<CharmapRows
@@ -56,6 +58,7 @@ const Charmap = ({ page, rows, cols, setCodePoint }) => {
 				rows={ rows }
 				cols={ cols }
 				setCodePoint={ setCodePoint }
+				activeCodePoint={ activeCodePoint }
 			/>
 		</table>
 	);
@@ -65,6 +68,7 @@ Charmap.propTypes = {
 	page: PropTypes.number,
 	rows: PropTypes.number,
 	cols: PropTypes.number,
+	activeCodePoint: PropTypes.number,
 	setCodePoint: PropTypes.func.isRequired,
 };
 
