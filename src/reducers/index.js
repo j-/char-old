@@ -17,6 +17,11 @@ import currentPage, {
 	getCurrentPage as getStateCurrentPage,
 } from './current-page';
 
+import charmap, {
+	getCharmapWidth as getStateCharmapWidth,
+	getCharmapHeight as getStateCharmapHeight,
+} from './charmap';
+
 import { types } from '../conversion';
 
 let inputValues;
@@ -31,6 +36,7 @@ export default combineReducers({
 	inputValues,
 	lastModified,
 	currentPage,
+	charmap,
 });
 
 export const getCodePoint = (state) => (
@@ -51,4 +57,12 @@ export const getLastModified = (state) => (
 
 export const getCurrentPage = (state) => (
 	getStateCurrentPage(state.currentPage)
+);
+
+export const getCharmapWidth = (state) => (
+	getStateCharmapWidth(state.charmap)
+);
+
+export const getCharmapHeight = (state) => (
+	getStateCharmapHeight(state.charmap)
 );
