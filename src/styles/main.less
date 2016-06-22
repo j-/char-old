@@ -16,21 +16,27 @@
 	border: 1px solid #ddd;
 	text-align: center;
 	height: 3em;
-}
 
-.charmap-cell > .charmap-char {
-	display: block;
-	height: 3em;
-	line-height: 3em;
-	color: #000;
-}
+	> .charmap-char {
+		text-decoration: none;
+		display: block;
+		height: 3em;
+		line-height: 3em;
+	}
 
-.charmap-cell > .charmap-char > span {
-	background-color: hsl(60, 100%, 85%);
-}
+	&.active > .charmap-char {
+		background-color: hsl(200, 100%, 95%);
+	}
 
-.charmap-cell > .charmap-char.active {
-	background-color: hsl(200, 100%, 95%);
+	&.acronym > .charmap-char > span {
+		color: #888;
+		font-size: 0.8em;
+	}
+
+	&:not(.acronym) > .charmap-char > span {
+		color: #000;
+		background-color: hsl(60, 100%, 85%);
+	}
 }
 
 .app-sidebar .editing {
