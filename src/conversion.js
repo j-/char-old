@@ -1,3 +1,4 @@
+import lpadZeroes from './lpad-zeroes';
 import {
 	getEntityCodePoint,
 	getEntityName,
@@ -35,10 +36,6 @@ const throwInvalidType = (type) => {
 	const names = types.map(type => `"${type}"`).join('/');
 	throw new TypeError(`Did not recognise conversion type "${type}". Expected ${names}.`);
 };
-
-const lpadZeroes = (value, length) => (
-	'0'.repeat(Math.max(length - String(value).length, 0)) + value
-);
 
 const EXP_UNICODE = /^U\+[0-9a-f]{4,}$/i;
 const EXP_HTMLDECIMAL = /^&#[0-9]+;$/;

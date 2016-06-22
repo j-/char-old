@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import CharmapBody from './charmap-body';
+import CharmapHead from './charmap-head';
 
 const Charmap = ({ page, rows, cols, setCodePoint, activeCodePoint }) => {
 	return (
 		<table className="charmap">
+			<CharmapHead cols={ cols } />
 			<CharmapBody
 				offset={ page * rows * cols }
 				rows={ rows }
