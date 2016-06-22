@@ -1,10 +1,11 @@
 import React from 'react';
 import CharmapCell from './charmap-cell';
+import range from './range';
 
 const CharmapRow = ({ offset, cols, setCodePoint, activeCodePoint }) => (
 	<tr className="charmap-row">
 	{
-		Array(cols).fill(null).map((_, i) => (
+		range(cols, (i) => (
 			<CharmapCell
 				key={ i }
 				offset={ offset + i }
