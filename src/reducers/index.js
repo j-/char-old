@@ -13,13 +13,16 @@ import lastModified, {
 	getLastModified as getStateLastModified,
 } from './last-modified';
 
-import currentPage, {
-	getCurrentPage as getStateCurrentPage,
-} from './current-page';
-
 import charmap, {
 	getCharmapWidth as getStateCharmapWidth,
 	getCharmapHeight as getStateCharmapHeight,
+	getCurrentPage as getStateCurrentPage,
+	getPageSize as getStatePageSize,
+	getMinPage as getStateMinPage,
+	getMaxPage as getStateMaxPage,
+	isMinPage as isStateMinPage,
+	isMaxPage as isStateMaxPage,
+	getPageForCodePoint as getStatePageForCodePoint,
 } from './charmap';
 
 import { types } from '../conversion';
@@ -37,7 +40,6 @@ export default combineReducers({
 	codePoint,
 	inputValues,
 	lastModified,
-	currentPage,
 	charmap,
 });
 
@@ -57,10 +59,6 @@ export const getLastModified = (state) => (
 	getStateLastModified(state.lastModified)
 );
 
-export const getCurrentPage = (state) => (
-	getStateCurrentPage(state.currentPage)
-);
-
 export const getCharmapWidth = (state) => (
 	getStateCharmapWidth(state.charmap)
 );
@@ -69,20 +67,30 @@ export const getCharmapHeight = (state) => (
 	getStateCharmapHeight(state.charmap)
 );
 
-export const getPageSize = (state) => (
-	getCharmapWidth(state) * getCharmapHeight(state)
+export const getCurrentPage = (state) => (
+	getStateCurrentPage(state.charmap)
 );
 
-export const getMinPage = () => 0;
+export const getPageSize = (state) => (
+	getStatePageSize(state.charmap)
+);
+
+export const getMinPage = (state) => (
+	getStateMinPage(state.charmap)
+);
 
 export const getMaxPage = (state) => (
-	Math.ceil(MAX_CODE_POINT / getPageSize(state))
+	getStateMaxPage(state.charmap)
 );
 
 export const isMinPage = (state) => (
-	getCurrentPage(state) === getMinPage(state)
+	isStateMinPage(state.charmap)
 );
 
 export const isMaxPage = (state) => (
-	getCurrentPage(state) === getMaxPage(state)
+	isStateMaxPage(state.charmap)
+);
+
+export const getPageForCodePoint = (state, codePoint) => (
+	getStatePageForCodePoint(state.charmap, codePoint)
 );
